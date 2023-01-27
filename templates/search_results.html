@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cranfield Search Engine Results</title>
+</head>
+<body>
+    <div style="width: 50%; margin: auto">
+        {% for result in results %}
+        <div style="padding: 10px; background-color: #EEE; margin: 20px">
+            <p style="font-size: 24px">{{ result }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
