@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Cranfield Search Engine Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div style="width: 50%; margin: auto">
-        {% for result in results %}
+        {% for title, result in results %}
         <div style="padding: 10px; background-color: #EEE; margin: 20px">
-            <p style="font-size: 24px">{{ result }}</p>
+            <h4>{{ title }}<h4>
+            <p>{{ result }}</p>
         </div>
         {% endfor %}
     </div>

@@ -1,0 +1,19 @@
+h2{
+    font-size: 60px;
+    color: blue;
+    text-align: center;
+    font-family: Cursive, Arial, Helvetica, sans-serif;
+}
+
+body{
+    width: 90%;
+    margin: auto;
+    font-family: "Helvetica Neue";
+    text-align: center;
+}
+
+input {
+    border: 2px solid grey;
+    border-radius: 4px;
+    height: 40px;
+}

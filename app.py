@@ -17,14 +17,14 @@ nltk.download("omw-1.4")
 
 def get_documents_in_a_dict(cran_docs: CranDocuments):
     """Collect all abstracts (documents we are indexing)
-    in a list and return them.
+    in a dictionary and return them.
 
     Args:
         cran_docs (CranDocuments): List containing instance
             of cranfield_data.Document object.
 
     Returns:
-        list: Containing abstracts/documents to be indexed.
+        dict: Containing doc.id as keys and document object as values
     """
     docs = {}
     for doc in cran_docs:
@@ -33,7 +33,26 @@ def get_documents_in_a_dict(cran_docs: CranDocuments):
     return docs
 
 
+def get_document_objects_in_a_dict(cran_docs: CranDocuments):
+    """Collect all documents we are indexing
+    in a dictionary and return them.
+
+    Args:
+        cran_docs (CranDocuments): List containing instance
+            of cranfield_data.Document object.
+
+    Returns:
+        dict: Containing doc.id as keys and document object as values
+    """
+    docs = {}
+    for doc in cran_docs:
+        docs[doc.id] = doc
+
+    return docs
+
+
 cran_docs = CranDocuments().get_all_docs()
+cran_doc_objects = get_document_objects_in_a_dict(cran_docs)
 cran_queries = CranQueries().get_all_queries()
 cran_qrels = CranQueryReleventDocs().get_query_relevantdocs_map()
 # print(cran_qrels)
@@ -62,7 +81,7 @@ def search():
         score = np.dot(q, doc_stats.document_vector_map[doc_id])
         doc_score_map[doc_id] = score
     # Display top-k results
-    k = 20
+    k = 10
     sorted_docs = dict(
         sorted(doc_score_map.items(), key=lambda item: item[1], reverse=True)
     )
@@ -72,5 +91,6 @@ def search():
         k -= 1
         if k == 0:
             break
-    docs = [all_docs[doc_id] for doc_id in doc_ids]
-    return render_template("search_results.html", results=docs)
+    abstracts = [all_docs[doc_id] for doc_id in doc_ids]
+    titles = [cran_doc_objects[doc_id].title for doc_id in doc_ids]
+    return render_template("search_results.html", results=zip(titles, abstracts))
