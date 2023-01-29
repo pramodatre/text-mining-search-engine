@@ -66,7 +66,7 @@ print("# of terms in the vocabulary: ", len(doc_stats.vocabulary))
 
 @app.route("/")
 def default():
-    return render_template("search_input.html")
+    return render_template("search_input.html", host=request.hostname)
 
 
 @app.route("/search", methods=["POST", "GET"])
