@@ -4,7 +4,7 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     </head>
     <body>
-        <form method="GET" action="{{ request.hostname }}">
+        <form method="GET" action="{{ request.hostname }}/search">
             <h2>Cranfield Search Engine</h2>
             <input type="text" required name="query" placeholder="Type your query here" style="width: 50%">
         </form>
