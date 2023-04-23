@@ -1,5 +1,5 @@
-# Search Engine Application (part of Build Text Mining Applications with Live-Coding in Python)
-Search engine application to index and retrieve documents
+# Search Engine Application
+Codebase containing Search Engine implementation to index and retrieve documents for the Udemy course on Build Text Mining Applications with Live-Coding in Python
 
 # Prerequisites
 1. Clone this repository using the command `clone https://github.com/pramodatre/text-mining-search-engine.git`
