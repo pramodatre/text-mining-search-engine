@@ -1,4 +1,4 @@
-# text-mining-search-engine
+# Search Engine Application (part of Build Text Mining Applications with Live-Coding in Python)
 Search engine application to index and retrieve documents
 
 # Prerequisites
